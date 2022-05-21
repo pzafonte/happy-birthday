@@ -1,0 +1,88 @@
+<html>
+<body>
+<script>
+var audioCtx = new AudioContext();
+
+function sleep(time) {
+  return new Promise(resolve => setTimeout(resolve, time));
+}
+
+async function beep(volume, frequency, duration) {
+  var oscillator = audioCtx.createOscillator();
+  var gainNode = audioCtx.createGain();
+  oscillator.connect(gainNode);
+  oscillator.frequency.value=frequency;
+  oscillator.type="square";
+  gainNode.connect(audioCtx.destination);
+  gainNode.gain.value=volume*0.01;
+  oscillator.start(audioCtx.currentTime);
+  oscillator.stop(audioCtx.currentTime+duration*0.001);
+  await sleep(duration);
+}
+
+async function happyBirthday() {
+    await sleep( 2000 );
+    await beep2( 100, 264, 125 );
+    await sleep( 250 );
+    await beep2( 100, 264, 125 );
+    await sleep( 125 );
+    await beep2( 100, 297, 500 );
+    await sleep( 125 );
+    await beep2( 100, 264, 500 );
+    await sleep( 125 );
+    await beep2( 100, 352, 500 );
+    await sleep( 125 );
+    await beep2( 100, 330, 1000 );
+    await sleep( 250 );
+    await beep2( 100, 264, 125 );
+    await sleep( 250 );
+    await beep2( 100, 264, 125 );
+    await sleep( 125 );
+    await beep2( 100, 297, 500 );
+    await sleep( 125 );
+    await beep2( 100, 264, 500 );
+    await sleep( 125 );
+    await beep2( 100, 396, 500 );
+    await sleep( 125 );
+    await beep2( 100, 352, 1000 );
+    await sleep( 250 );
+    await beep2( 100, 264, 125 );
+    await sleep( 250 );
+    await beep2( 100, 264, 125 );
+    await sleep( 125 );
+    await beep2( 100, 2642, 500 );
+    await sleep( 125 );
+    await beep2( 100, 440, 500 );
+    await sleep( 125 );
+    await beep2( 100, 352, 250 );
+    await sleep( 125 );
+    await beep2( 100, 352, 125 );
+    await sleep( 125 );
+    await beep2( 100, 330, 500 );
+    await sleep( 125 );
+    await beep2( 100, 297, 1000 );
+    await sleep( 250 );
+    await beep2( 100, 466, 125 );
+    await sleep( 250 );
+    await beep2( 100, 466, 125 );
+    await sleep( 125 );
+    await beep2( 100, 440, 500 );
+    await sleep( 125 );
+    await beep2( 100, 352, 500 );
+    await sleep( 125 );
+    await beep2( 100, 396, 500 );
+    await sleep( 125 );
+    await beep2( 100, 352, 1000 );
+}
+
+document.querySelector('button').addEventListener('click', function() {
+  audioCtx.resume();
+  happyBirthday();
+});
+</script>
+
+<button>Happy Birthday</button> Chris!
+
+</body>
+</html>
+
